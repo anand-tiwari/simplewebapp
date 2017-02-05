@@ -12,7 +12,7 @@
 angular.module('ikya.services')
 .factory('ViewService', function ($http, Settings, $state, Properties, $log,$q) {
             var data;
-            function getAnalyticsData(){
+            function getApiData(){
                 var deferred = $q.defer();
                 $http({
                     url:'http://localhost:3002/data.json',
@@ -32,11 +32,20 @@ angular.module('ikya.services')
             return deferred.promise;
             };
 
+            function getData(){
+                var deferred = $q.defer();
+                deferred.resolve({
+                    status: "ok",
+                    data: data
+                });
+                return deferred.promise;
+            }
+
             function getEventList(){
                 if (data==undefined){
-                    return getAnalyticsData();
+                    return getApiData();
                 }else{
-                    return data;
+                    return getData();
                 }
             }
 
@@ -50,7 +59,7 @@ angular.module('ikya.services')
     return{
         getEventList: getEventList,
         updateEventList: updateEventList,
-        getAnalyticsData:getAnalyticsData
+        getApiData:getApiData
     };
 
 });

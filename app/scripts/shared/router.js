@@ -25,5 +25,13 @@ angular.module('ikya.router', ['ui.router'])
       title:'Main View',
       controller:"ViewCtrl"
     })
-      
+
+    .state('about', {
+      url: "/about",
+      templateUrl: "app/views/about.html",
+      title:'About View',
+      controller:"MainCtrl"
+    })
+
+
 });

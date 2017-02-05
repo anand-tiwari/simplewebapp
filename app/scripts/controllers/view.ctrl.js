@@ -11,10 +11,12 @@ angular.module('ikya.controllers')
   	'use strict';
 
     var init =  function(){
+        console.log("anand");
         ViewService.getEventList().then(function(response){
+            console.log(response,"kkk");
             $scope.event_list = response.data['event_list'];
             $scope.extra = response.data['extra'];
-        });   
+        }); 
     }
 
     $scope.setting = false;
