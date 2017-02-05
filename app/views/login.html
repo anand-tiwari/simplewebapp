@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <form id="myForm" ng-if="isAuthenticated=='login' ">
+     <div class="row right" style="width: 100%">
+          <div class="input col m3">
+              <input id="email" ng-model="userName" type="email" class="validate" placeholder="User Name">
+          </div>
+          <div class="input col m3">
+              <input class="password" ng-model="passWord" type="password" placeholder="Password">
+          </div>
+          <button ng-click="login()" class="white black-text col btn secondary-content waves-effect" style="margin:1.8% 0px 0px 8px">Submit</button>
+      </div>
+  </form>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<div>
+    
+    <header-directive></header-directive>
+    
+    <div class="row container-fluid top-margin">
+
+    	<sidebar-directive></sidebar-directive>
+
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+            <div class="create_event">
+                <div class="create-post-title">Create new Event</div>
+                <div class="click-here">
+                    <i class="fa fa-file-text create-post-icon" aria-hidden="true"></i>
+                    <span class="event-click-text">&nbsp Click here to post a new event</span>
+                </div>
+            </div>
+            <div class="option-menu col-md-12">
+                <div class="row">
+                    <div class="col-md-6 options-text" ng-click="bottom = true">
+                        All Events
+                        <span class="slider" ng-class="{'border-bottom': bottom == true}"></span>
+                    </div>
+                    <div class="col-md-6 options-text border-left" ng-click="bottom = false">
+                        Paid Events</div>
+                    <span class="slider" ng-class="{'border-bottom-right': bottom == false}"></span>
+                </div>
+            </div>
+            <div class="col-md-12 cards" ng-repeat="item in event_list" track by item.id >
+                <div class="menu row">
+                    <div class="col-md-2 align-center">
+                        <img src="{{item.institute.image}}">
+                    </div>
+                    <div class="col-md-10" style="padding-left: 0px;">
+                        <div class="row">
+                            <div class="col-md-6">{{item.institute.name}}</div>
+                            <div class="col-md-1 pull-right dropdown" dropdown>
+                                <a href="" class="dropdown-toggle" dropdown-toggle>
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu" dropdown-menu>
+                                    <li><a ng-click="delete(item)">Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" ng-bind="formatDate(item.created)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-container col-md-12">
+                    <div class="row">
+                        <img ng-show="item.image" class="big-img" src="{{item.image}}">
+                        <img ng-show="!item.image" class="big-img" src="placeholder-event.jpg">
+                    </div>
+                    <div class="col-md-12 add-padding">{{item.title}}</div>
+                    <div class="col-md-12 add-padding"><i class="fa fa-calendar" aria-hidden="true"></i> {{item.start_date}}
+                        <span ng-show="item.end_date">- {{item.end_date}} </span>| {{item.start_time}}
+                        <span ng-show="item.end_time">- {{item.end_time}} </span>
+                    </div>
+                    <div class="col-md-12 add-padding"><i class="fa fa-map-marker" aria-hidden="true"></i> {{item.location}}</div>
+                    <div class="col-md-12 add-padding">{{item.details | limitTo: shrinkVal}}
+                        <a ng-hide="item.details.length < 150 || shrinkVal > 150" ng-click="shrinkVal=item.details.length">Show more..</a>
+                        <a ng-show="shrinkVal > 151" ng-click="shrinkVal=150">Show  less...</a>
+                    </div>
+                    <div class="col-md-12 amount">
+                        <div class="col-md-6"><i class="fa fa-inr" aria-hidden="true"></i> {{item.ticket_price}}</div>
+                        <div class="col-md-6 align-right">
+                            <div class="attending">{{item.attending}} Attending</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-color">
+                        <div class="col-md-2">{{item.likes_count}} likes</div>
+                        <div class="col-md-3">{{item.comments_count}} comments</div>
+                        <div class="col-md-3">{{item.shares_count}} shares</div>
+                    </div>
+                    <div class="col-md-12 posted-user">
+                        <div class="col-md-9">
+                            <img class="logged-user" src="download.png">
+                            <span class="brown-color">Posted by </span>
+                            <span>{{item.user.username}}</span>
+                        </div>
+                        <div class="col-md-3 pull-right red-color">
+                            <i class="fa fa-commenting-o" aria-hidden="true"></i> Comment
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row right-sidebar">
+                <div class="col-md-12 extra subscriber">
+                    <div class="col-md-2"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></div>
+                    <div class="col-md-10">
+                        <div class="col-md-12">#Subscribers</div>
+                        <div class="col-md-12">{{extra.subscriber}}</div>
+                    </div>
+                </div>
+                <div class="col-md-12 extra followers">
+                    <div class="col-md-2"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></div>
+                    <div class="col-md-10">
+                        <div class="col-md-12">#followers</div>
+                        <div class="col-md-12">{{extra.followers}}</div>
+                    </div>
+                </div>
+                <div class="col-md-12 extra premium">
+                    <div class="col-md-2"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></div>
+                    <div class="col-md-10">
+                        <div class="col-md-12">#Premium Paid</div>
+                        <div class="col-md-12">{{extra.paid_events}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a ui-sref="about" href="">About .</a>
+                    <a ui-sref="faq" href="">FAQ .</a>
+                    <a ui-sref="tmc" href=""> Terms & Conditions .</a>
+                    <a ui-sref="pp" href="">Privacy Policy .</a>
+                    <a ui-sref="contactus" href="">Contact Us</a>
+                    <br> Sarvamapp c 2016
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
