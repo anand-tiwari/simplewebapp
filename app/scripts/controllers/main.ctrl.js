@@ -3,7 +3,7 @@
  * @name ikya.controller:MainCtrl
  * @description
  * # MainCtrl
- * @author Ashish Mishra <ashish.mishra@nanobianalytics.com>
+ * @author Anand Tiwari <anandtiwari192@gmail.com>
  * Controller of the ikya
  */
 angular.module('ikya.controllers')

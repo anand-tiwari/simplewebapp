@@ -1,6 +1,6 @@
-#NANOBI - ikya
+#
 Analytics Delivered Simple, Agile, Pervasive.....
->Custom Dashboard for ikya
+>
 ### Version
 1.0.0
 
@@ -21,11 +21,10 @@ You need Nodejs installed:
 
 For more help regarding nodejs installation click [here](https://nodejs.org/en/download/package-manager/).
 ```sh
-$ git clone [git-repo-url] ikya
-$ cd becom
-$ git checkout ikya
+$ git clone https://github.com/anand-tiwari/simplewebapp.git
+$ cd simplewebapp
 $ npm install && bower install
 $ npm start
 ```
 
-`git-repo-url: https://github.com/nanobianalytics/CUSTOMERASSETS.git` 
+`git-repo-url: https://github.com/anand-tiwari/simplewebapp.git` 
